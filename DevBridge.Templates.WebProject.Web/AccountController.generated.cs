@@ -20,8 +20,10 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace DevBridge.Templates.WebProject.Web.Controllers {
-    public partial class AccountController {
+namespace DevBridge.Templates.WebProject.Web.Controllers
+{
+    public partial class AccountController
+    {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AccountController() { }
 
@@ -29,21 +31,24 @@ namespace DevBridge.Templates.WebProject.Web.Controllers {
         protected AccountController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected RedirectToRouteResult RedirectToAction(ActionResult result) {
+        protected RedirectToRouteResult RedirectToAction(ActionResult result)
+        {
             var callInfo = result.GetT4MVCResult();
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected RedirectToRouteResult RedirectToActionPermanent(ActionResult result) {
+        protected RedirectToRouteResult RedirectToActionPermanent(ActionResult result)
+        {
             var callInfo = result.GetT4MVCResult();
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Login() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+        public virtual System.Web.Mvc.ActionResult Login()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -59,13 +64,15 @@ namespace DevBridge.Templates.WebProject.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionNamesClass {
+        public class ActionNamesClass
+        {
             public readonly string LoginStatus = "LoginStatus";
             public readonly string Login = "Login";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionNameConstants {
+        public class ActionNameConstants
+        {
             public const string LoginStatus = "LoginStatus";
             public const string Login = "Login";
         }
@@ -75,31 +82,49 @@ namespace DevBridge.Templates.WebProject.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Login LoginParams { get { return s_params_Login; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Login {
+        public class ActionParamsClass_Login
+        {
             public readonly string model = "model";
         }
-        static readonly ViewNames s_views = new ViewNames();
+        static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ViewNames Views { get { return s_views; } }
+        public ViewsClass Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ViewNames {
+        public class ViewsClass
+        {
+            static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+            public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+            public class _ViewNamesClass
+            {
+                public readonly string LoginForm = "LoginForm";
+                public readonly string LoginStatus = "LoginStatus";
+            }
             public readonly string LoginForm = "~/Views/Account/LoginForm.cshtml";
             public readonly string LoginStatus = "~/Views/Account/LoginStatus.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_AccountController: DevBridge.Templates.WebProject.Web.Controllers.AccountController {
+    public partial class T4MVC_AccountController : DevBridge.Templates.WebProject.Web.Controllers.AccountController
+    {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult LoginStatus() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LoginStatus);
+        partial void LoginStatusOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult LoginStatus()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LoginStatus);
+            LoginStatusOverride(callInfo);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Login(DevBridge.Templates.WebProject.Web.Logic.Models.Account.LoginViewModel model) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, DevBridge.Templates.WebProject.Web.Logic.Models.Account.LoginViewModel model);
+
+        public override System.Web.Mvc.ActionResult Login(DevBridge.Templates.WebProject.Web.Logic.Models.Account.LoginViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            LoginOverride(callInfo, model);
             return callInfo;
         }
 
