@@ -61,10 +61,16 @@
     <Compile Include="Commands\Agreement\GetAgreements\AgreementListViewModel.cs" />
     <Compile Include="Commands\Agreement\GetAgreements\GetAgreementsCommand.cs" />
     <Compile Include="Commands\Agreement\GetAgreements\GetAgreementsFilter.cs" />
+    <Compile Include="Commands\Article\CreateArticle\CreateArticleCommand.cs" />
+    <Compile Include="Commands\Article\DeleteArticleViewModel\DeleteArticleCommand.cs" />
+    <Compile Include="Commands\Article\GetArticles\GetArticlesCommand.cs" />
     <Compile Include="ContainerFactory.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\LoginStatusViewModel.cs" />
+    <Compile Include="Models\Article\ArticleListViewModel.cs" />
+    <Compile Include="Models\Article\ArticleViewModel.cs" />
+    <Compile Include="Models\Article\CreateArticleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebPrincipalAccessor.cs" />
   </ItemGroup>
