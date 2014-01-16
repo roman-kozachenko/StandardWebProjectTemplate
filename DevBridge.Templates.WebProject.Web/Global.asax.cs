@@ -12,13 +12,16 @@ using BetterCms.Core.Mvc.Commands;
 using Common.Logging;
 using DevBridge.Templates.WebProject.Data.DataContext;
 using DevBridge.Templates.WebProject.DataContracts;
+using DevBridge.Templates.WebProject.DataEntities;
 using DevBridge.Templates.WebProject.ServiceContracts;
 using DevBridge.Templates.WebProject.Services;
 using DevBridge.Templates.WebProject.Tools.Commands;
 using DevBridge.Templates.WebProject.Web.Logic;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Agreement.GetAgreements;
-
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using Microsoft.Practices.ServiceLocation;
+using NHibernate.Tool.hbm2ddl;
 
 
 namespace DevBridge.Templates.WebProject.Web
@@ -47,6 +50,15 @@ namespace DevBridge.Templates.WebProject.Web
         {
             try
             {
+                /*
+                 * Initialize Database
+                 */
+                Fluently.Configure()
+                    .Database(MsSqlConfiguration.MsSql2008)
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<IEntity>())
+                    .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
+                    .BuildSessionFactory();
+                
                 var container = new ContainerFactory().CreateContainer(typeof(WebApplication).Assembly);
                 DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
