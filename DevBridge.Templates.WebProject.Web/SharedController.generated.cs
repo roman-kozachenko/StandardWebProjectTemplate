@@ -37,9 +37,11 @@ namespace T4MVC
             {
                 public readonly string Error = "Error";
                 public readonly string Layout = "Layout";
+                public readonly string LoginStatus = "LoginStatus";
             }
             public readonly string Error = "~/Views/Shared/Error.cshtml";
             public readonly string Layout = "~/Views/Shared/Layout.cshtml";
+            public readonly string LoginStatus = "~/Views/Shared/LoginStatus.cshtml";
         }
     }
 

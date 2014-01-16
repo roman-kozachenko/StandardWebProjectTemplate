@@ -96,7 +96,15 @@ namespace Links
         }
     
         public static readonly string forms_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/forms.min.js") ? Url("forms.min.js") : Url("forms.js");
+        public static readonly string jquery_1_4_4_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.4.4-vsdoc.min.js") ? Url("jquery-1.4.4-vsdoc.min.js") : Url("jquery-1.4.4-vsdoc.js");
+        public static readonly string jquery_1_4_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.4.4.min.js") ? Url("jquery-1.4.4.min.js") : Url("jquery-1.4.4.js");
+        public static readonly string jquery_1_4_4_min_js = Url("jquery-1.4.4.min.js");
         public static readonly string jquery_modal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.modal.min.js") ? Url("jquery.modal.min.js") : Url("jquery.modal.js");
+        public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
+        public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
+        public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
+        public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
+        public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
         public static readonly string require_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/require.min.js") ? Url("require.min.js") : Url("require.js");
     }
 
