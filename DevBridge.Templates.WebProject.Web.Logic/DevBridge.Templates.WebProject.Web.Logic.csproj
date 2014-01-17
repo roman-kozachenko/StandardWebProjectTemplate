@@ -47,6 +47,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adaptors\ArticleAdaptor.cs" />
     <Compile Include="Commands\Agreement\CreateAgreement\CreateAgreementCommand.cs" />
     <Compile Include="Commands\Agreement\CreateAgreement\CreateAgreementViewModel.cs" />
     <Compile Include="Commands\Agreement\GetAgreements\AgreementItemViewModel.cs" />
@@ -75,7 +77,10 @@
     <Compile Include="Models\Article\ArticleViewModel.cs" />
     <Compile Include="Models\Article\CreateArticleViewModel.cs" />
     <Compile Include="Models\Article\GetArticlesFilterViewModel.cs" />
+    <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Comment\CreateCommentViewModel.cs" />
+    <Compile Include="Models\Like\LikeViewModel.cs" />
+    <Compile Include="Models\User\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebPrincipalAccessor.cs" />
   </ItemGroup>
