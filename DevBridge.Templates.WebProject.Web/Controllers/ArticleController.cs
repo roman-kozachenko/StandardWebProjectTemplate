@@ -17,7 +17,8 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Index()
         {
-            var model = GetCommand<GetArticlesCommand>().Execute(GetFilter());
+            var model = GetCommand<GetArticlesCommand>().ExecuteCommand(GetFilter());
+
             return View(model);
         }
 
@@ -58,6 +59,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         {
             try
             {
+                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
