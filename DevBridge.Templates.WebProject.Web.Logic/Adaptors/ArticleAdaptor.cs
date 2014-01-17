@@ -50,5 +50,11 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
         {
             return new LikeViewModel {User = GetUserById(like.UserId)};
         }
+
+        public Article CreateArticleViewModel2Article(CreateArticleViewModel request)
+        {
+            var article = new Article {UserId = request.UserId, Title = request.Title, Text = request.Text};
+            return article;
+        }
     }
 }

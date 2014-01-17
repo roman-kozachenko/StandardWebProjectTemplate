@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using DevBridge.Templates.WebProject.Web.Helpers;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.CreateArticle;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticle;
@@ -44,13 +45,8 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Create()
         {
-            var model = GetCommand<CreateArticleCommand>().ExecuteCommand(new CreateArticleViewModel()
-            {
-                Text = "Test",
-                Title = "Test",
-                UserId = Guid.NewGuid()
-            });
-
+            
+            
             return View();
         } 
 
@@ -58,12 +54,16 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         // POST: /Article/Create
 
         [HttpPost]
-        public virtual ActionResult Create(FormCollection collection)
+        public virtual ActionResult Create(CreateArticleViewModel articleViewModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                var membershipUser = Membership.GetUser(User.Identity.Name);
+                if (membershipUser != null)
+                    if (membershipUser.ProviderUserKey != null)
+                        articleViewModel.UserId = Guid.Parse(membershipUser.ProviderUserKey.ToString());
 
+                GetCommand<CreateArticleCommand>().ExecuteCommand(articleViewModel);
                 return RedirectToAction("Index");
             }
             catch

@@ -1,6 +1,7 @@
 ﻿using System;
 using DevBridge.Templates.WebProject.DataContracts;
 using DevBridge.Templates.WebProject.Tools.Commands;
+using DevBridge.Templates.WebProject.Web.Logic.Adaptors;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Agreement;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 
@@ -8,23 +9,20 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Article.CreateArticl
 {
     public class CreateArticleCommand : CommandBase, ICommand<CreateArticleViewModel, bool>
     {
-        private IRepository repository;
+        private readonly IRepository _repository;
+        private readonly ArticleAdaptor _adaptor;
 
         public CreateArticleCommand(IRepository repository)
         {
-            this.repository = repository;
+            _repository = repository;
+            _adaptor = new ArticleAdaptor();
         }
 
         public bool Execute(CreateArticleViewModel request)
         {
-            DataEntities.Entities.Article article = new DataEntities.Entities.Article();
-
-            article.UserId = request.UserId;
-            article.Title = request.Title;
-            article.Text = request.Text;
-
-            repository.Save(article);
-            repository.Commit();
+            var article = _adaptor.CreateArticleViewModel2Article(request);
+            _repository.Save(article);
+            _repository.Commit();
 
             return true;
         }
