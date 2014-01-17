@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DevBridge.Templates.WebProject.Web.Helpers;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 
@@ -15,7 +16,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Index()
         {
-            var model = GetCommand<GetArticlesCommand>().Execute(GetFilter());
+            var model = GetCommand<GetArticlesCommand>().ExecuteCommand(GetFilter());
             return View(model);
         }
 
