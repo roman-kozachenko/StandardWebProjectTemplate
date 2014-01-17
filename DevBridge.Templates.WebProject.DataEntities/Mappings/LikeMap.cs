@@ -14,7 +14,7 @@ namespace DevBridge.Templates.WebProject.DataEntities.Mappings
 
             Map(f => f.UserId).Not.Nullable();
 
-            References(f => f.Comment).Not.Nullable();
+            References(f => f.Comment).Column("CommentId").Not.Nullable();
         }
     }
 }

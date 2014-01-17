@@ -15,10 +15,10 @@ namespace DevBridge.Templates.WebProject.DataEntities.Mappings
             Map(f => f.UserId).Not.Nullable();
             Map(f => f.Text).Not.Nullable();
 
-            References(f => f.Article).Not.Nullable();
-            References(f => f.ParentComment).Nullable();
+            References(f => f.Article).Column("ArticleId").Not.Nullable();
+            References(f => f.ParentComment).Column("ParentCommentId").Nullable();
 
-            HasMany(f => f.Likes).Cascade.Delete();
+            HasMany(f => f.Likes).KeyColumn("CommentId").Cascade.Delete();
         }
     }
 }

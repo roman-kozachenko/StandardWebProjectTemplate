@@ -16,7 +16,7 @@ namespace DevBridge.Templates.WebProject.DataEntities.Mappings
             Map(f => f.Title).Not.Nullable();
             Map(f => f.Text).Not.Nullable().Length(65535);
 
-            HasMany(f => f.Comments).Cascade.Delete();
+            HasMany(f => f.Comments).KeyColumn("ArticleId").Cascade.Delete();
         }
     }
 }
