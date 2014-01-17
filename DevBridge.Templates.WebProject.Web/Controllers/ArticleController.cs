@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DevBridge.Templates.WebProject.Web.Helpers;
+using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.CreateArticle;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 
@@ -17,6 +18,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         public virtual ActionResult Index()
         {
             var model = GetCommand<GetArticlesCommand>().ExecuteCommand(GetFilter());
+
             return View(model);
         }
 
@@ -39,6 +41,13 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Create()
         {
+            var model = GetCommand<CreateArticleCommand>().ExecuteCommand(new CreateArticleViewModel()
+            {
+                Text = "Test",
+                Title = "Test",
+                UserId = Guid.NewGuid()
+            });
+
             return View();
         } 
 
