@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DevBridge.Templates.WebProject.Web.Helpers;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.CreateArticle;
+using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticle;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 
@@ -33,7 +34,9 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Details(int id)
         {
-            return View();
+            var model = GetCommand<GetArticleCommand>().ExecuteCommand(id);
+
+            return View(model);
         }
 
         //

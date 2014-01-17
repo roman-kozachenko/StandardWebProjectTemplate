@@ -1,6 +1,16 @@
 ﻿@model DevBridge.Templates.WebProject.Web.Logic.Models.Article.ArticleViewModel
+<style type="text/css">.createdBy {
+     font-style: italic
+ }
 
-<h2>Article</h2>
-@*<li data-id="@Model">
-    Number:@Model.Number; Name:@Model.CustomerCode; Customer:@Model.CustomerName
-</li>*@
+ .article_body_preview {
+ }
+</style>
+
+
+<li data-id="@Model.Id">
+    <h2>@Html.DisplayFor(model => model.Title)</h2>
+    <div class="article_body_preview">@Html.DisplayFor(model => model.Text)</div>
+    @Html.ActionLink("More...","Details",new {id=Model.Id})
+    <div class="createdBy">Created by: @Model.User.Name</div>
+</li>

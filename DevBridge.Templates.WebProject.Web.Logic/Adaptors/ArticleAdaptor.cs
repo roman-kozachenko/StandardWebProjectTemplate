@@ -15,6 +15,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
         {
             var result = new ArticleViewModel
             {
+                Id = article.Id,
                 Title = article.Title,
                 Text = article.Text,
                 User=GetUserById(article.UserId),
@@ -25,18 +26,13 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
 
         public UserViewModel GetUserById(Guid userId)
         {
-            var user = Membership.GetUser(userId);
-            return user == null ? null : User2UserViewModel(user);
+            return  User2UserViewModel(Membership.GetUser(userId));
         }
 
-        private  UserViewModel User2UserViewModel(MembershipUser user)
+        private UserViewModel User2UserViewModel(MembershipUser user)
         {
-            var result = new UserViewModel
-            {
-                Name = user.UserName,
-            };
+            var result = new UserViewModel {Name = user != null ? user.UserName : "Unknown user"};
             return result;
-
         }
 
         public  CommentViewModel Comment2CommentViewModel(Comment comment)
