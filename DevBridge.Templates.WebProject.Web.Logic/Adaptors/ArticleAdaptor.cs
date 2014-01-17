@@ -11,7 +11,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
 {
     public class ArticleAdaptor
     {
-        public static ArticleViewModel Article2ArticleViewModel(Article article)
+        public  ArticleViewModel Article2ArticleViewModel(Article article)
         {
             var result = new ArticleViewModel
             {
@@ -23,12 +23,13 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
             return result;
         }
 
-        public static UserViewModel GetUserById(Guid userId)
+        public UserViewModel GetUserById(Guid userId)
         {
-            return User2UserViewModel(Membership.GetUser(userId));
+            var user = Membership.GetUser(userId);
+            return user == null ? null : User2UserViewModel(user);
         }
 
-        private static UserViewModel User2UserViewModel(MembershipUser user)
+        private  UserViewModel User2UserViewModel(MembershipUser user)
         {
             var result = new UserViewModel
             {
@@ -38,7 +39,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
 
         }
 
-        public static CommentViewModel Comment2CommentViewModel(Comment comment)
+        public  CommentViewModel Comment2CommentViewModel(Comment comment)
         {
             var result = new CommentViewModel
             {
@@ -49,7 +50,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
             return result;
         }
 
-        public static LikeViewModel Like2LikeViewModel(Like like)
+        public  LikeViewModel Like2LikeViewModel(Like like)
         {
             return new LikeViewModel {User = GetUserById(like.UserId)};
         }
