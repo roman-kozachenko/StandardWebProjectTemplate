@@ -9,9 +9,9 @@ using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 
 namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles
 {
-    public class GetArticlesCommand : CommandBase, ICommand<ArticleListViewModel>
+    public class GetArticlesCommand : CommandBase, ICommand<GetArticlesFilterViewModel,ArticleListViewModel>
     {
-        public void Execute(ArticleListViewModel request)
+        public ArticleListViewModel Execute(GetArticlesFilterViewModel request)
         {
             throw new NotImplementedException();
         }

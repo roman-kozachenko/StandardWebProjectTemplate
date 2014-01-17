@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using DevBridge.Templates.WebProject.Tools.Commands;
 
-namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Article.DeleteArticleViewModel
+namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Comment.DeleteComment
 {
-    public class DeleteArticleCommand:CommandBase,ICommand
+    public class DeleteCommentCommand:CommandBase,ICommand<int>
     {
-        public void Execute()
+        public void Execute(int commentId)
         {
             throw new NotImplementedException();
         }

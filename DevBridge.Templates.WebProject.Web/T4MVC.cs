@@ -26,6 +26,7 @@ public static class MVC
 {
     public static DevBridge.Templates.WebProject.Web.Controllers.AccountController Account = new DevBridge.Templates.WebProject.Web.Controllers.T4MVC_AccountController();
     public static DevBridge.Templates.WebProject.Web.Controllers.AgreementController Agreement = new DevBridge.Templates.WebProject.Web.Controllers.T4MVC_AgreementController();
+    public static DevBridge.Templates.WebProject.Web.Controllers.ArticleController Article = new DevBridge.Templates.WebProject.Web.Controllers.T4MVC_ArticleController();
     public static DevBridge.Templates.WebProject.Web.Controllers.HomeController Home = new DevBridge.Templates.WebProject.Web.Controllers.T4MVC_HomeController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }

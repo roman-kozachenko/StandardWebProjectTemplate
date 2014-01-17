@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles;
+using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 
 namespace DevBridge.Templates.WebProject.Web.Controllers
 {
-    public class ArticleController : Controller
+    public partial class ArticleController : Tools.Mvc.ExtendedControllerBase
     {
         //
         // GET: /Article/
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
-            return View();
+            var model = GetCommand<GetArticlesCommand>().Execute(GetFilter());
+            return View(model);
+        }
+
+        private GetArticlesFilterViewModel GetFilter()
+        {
+            var result = new GetArticlesFilterViewModel();
+            return result;
         }
 
         //
         // GET: /Article/Details/5
 
-        public ActionResult Details(int id)
+        public virtual ActionResult Details(int id)
         {
             return View();
         }
@@ -27,7 +36,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         //
         // GET: /Article/Create
 
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         } 
@@ -36,7 +45,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         // POST: /Article/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public virtual ActionResult Create(FormCollection collection)
         {
             try
             {
@@ -52,8 +61,8 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         
         //
         // GET: /Article/Edit/5
- 
-        public ActionResult Edit(int id)
+
+        public virtual ActionResult Edit(int id)
         {
             return View();
         }
@@ -62,7 +71,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         // POST: /Article/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public virtual ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
@@ -78,8 +87,8 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         //
         // GET: /Article/Delete/5
- 
-        public ActionResult Delete(int id)
+
+        public virtual ActionResult Delete(int id)
         {
             return View();
         }
@@ -88,7 +97,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         // POST: /Article/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public virtual ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
