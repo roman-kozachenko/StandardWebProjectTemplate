@@ -10,7 +10,9 @@
 
 <li data-id="@Model.Id">
     <h2>@Html.DisplayFor(model => model.Title)</h2>
-    <div class="article_body_preview">@Html.DisplayFor(model => model.Text)</div>
+    <div class="article_body_preview">
+        @Html.DisplayFor(model => model.Text)
+    </div>
     @Html.ActionLink("More...","Details",new {id=Model.Id})
     <div class="createdBy">Created by: @Model.User.Name</div>
 </li>

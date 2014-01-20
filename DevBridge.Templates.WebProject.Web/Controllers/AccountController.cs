@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using DevBridge.Templates.WebProject.Web.Logic.Models;
@@ -34,7 +35,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Article");
                     }
                 }
                 else
@@ -54,7 +55,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index","Article");
         }
 
         //
@@ -62,7 +63,16 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Register()
         {
-            return View();
+            
+            var model = new RegisterModel()
+            {
+                AvailableRoles = Roles.GetAllRoles().Select(role=>new SelectListItem
+                {
+                    Value = role,
+                    Text=role
+                })
+            };
+            return View(model);
         }
 
         //
@@ -79,8 +89,9 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
+                    Roles.AddUserToRole(model.UserName, model.SelectedRole);
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Article");
                 }
                 else
                 {

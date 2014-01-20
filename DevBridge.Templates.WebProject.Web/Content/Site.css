@@ -6,7 +6,7 @@ pre { font-size: 12px; font-family: Consolas, "Liberation Mono", Courier, monosp
 .header { background: #F6F6F6; border-bottom: 1px solid #E5E5E5; min-height: 20px; padding: 10px 0; }
 .container { width: 920px; margin: 0 auto; }
 
-#logindisplay { width: 200px; float: right; }
+#logindisplay { float: right; }
 
 blockquote { border-left: 4px solid #DDD; padding: 0 15px; color: #777; margin: 15px 0; }
     blockquote q { font-size: 18px; }

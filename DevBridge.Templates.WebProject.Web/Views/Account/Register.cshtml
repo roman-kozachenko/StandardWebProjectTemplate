@@ -54,7 +54,15 @@
                 @Html.PasswordFor(m => m.ConfirmPassword)
                 @Html.ValidationMessageFor(m => m.ConfirmPassword)
             </div>
-
+            
+            <div class="editor-label">
+                @Html.LabelFor(m => m.SelectedRole)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.SelectedRole,@Model.AvailableRoles)
+                @Html.ValidationMessageFor(m => m.SelectedRole)
+            </div>
+            
             <p>
                 <input type="submit" value="Register" />
             </p>

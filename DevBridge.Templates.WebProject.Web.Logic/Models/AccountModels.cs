@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace DevBridge.Templates.WebProject.Web.Logic.Models
@@ -59,5 +61,11 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Role")]
+        public string SelectedRole { get; set; }
+        
+        public IEnumerable<SelectListItem> AvailableRoles { get; set; }
     }
 }
