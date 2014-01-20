@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Routing;
-
+using System.Web.Security;
 using Autofac;
 using Autofac.Integration.Mvc;
 
@@ -42,7 +42,7 @@ namespace DevBridge.Templates.WebProject.Web
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Article", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
         }
 
@@ -65,13 +65,29 @@ namespace DevBridge.Templates.WebProject.Web
                 AreaRegistration.RegisterAllAreas();
                 RegisterGlobalFilters(GlobalFilters.Filters);
                 RegisterRoutes(RouteTable.Routes);
-                
+                InitializeRoles();
                 Log.Info("Site started...");
             }
             catch (Exception ex)
             {
                 Log.Fatal("Failed to start site.", ex);
                 throw;
+            }
+        }
+
+        private void InitializeRoles()
+        {
+            var necessaryRoles = new[]
+            {
+                "User",
+                "Editor",
+                "Admin",
+            };
+            var roles = Roles.GetAllRoles();
+            foreach (var role in necessaryRoles)
+            {
+                if(!roles.Contains(role))
+                    Roles.CreateRole(role);
             }
         }
 

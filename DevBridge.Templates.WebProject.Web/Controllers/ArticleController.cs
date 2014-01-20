@@ -44,7 +44,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         //
         // GET: /Article/Create
-
+        [Authorize(Roles = "Admin,Editor")]
         public virtual ActionResult Create()
         {
             
@@ -56,6 +56,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         // POST: /Article/Create
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Editor")]
         public virtual ActionResult Create(CreateArticleViewModel articleViewModel)
         {
             try
@@ -76,7 +77,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         
         //
         // GET: /Article/Edit/5
-
+        [Authorize(Roles = "Admin,Editor")]
         public virtual ActionResult Edit(int id)
         {
             var model = GetCommand<GetArticleCommand>().ExecuteCommand(id);
@@ -88,6 +89,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         // POST: /Article/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Editor")]
         public virtual ActionResult Edit(int id,ArticleViewModel article)
         {
             try
@@ -103,7 +105,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         //
         // GET: /Article/Delete/5
-
+        [Authorize(Roles = "Admin")]
         public virtual ActionResult Delete(int id)
         {
             GetCommand<DeleteArticleCommand>().ExecuteCommand(id);
