@@ -35,7 +35,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Article");
                     }
                 }
                 else
@@ -55,7 +55,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index","Article");
         }
 
         //
@@ -91,7 +91,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
                 {
                     Roles.AddUserToRole(model.UserName, model.SelectedRole);
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Article");
                 }
                 else
                 {
