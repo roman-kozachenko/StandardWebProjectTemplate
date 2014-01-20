@@ -9,7 +9,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Comment.CreateCommen
 {
     public class CreateCommentCommand:CommandBase,ICommand<CreateCommentViewModel>
     {
-        public void Execute(CreateCommentViewModel viewModel)
+        public void Execute(CreateCommentViewModel request)
         {
             throw new NotImplementedException();
         }

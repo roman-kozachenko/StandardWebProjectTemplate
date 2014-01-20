@@ -8,7 +8,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Comment.DeleteCommen
 {
     public class DeleteCommentCommand:CommandBase,ICommand<int>
     {
-        public void Execute(int viewModel)
+        public void Execute(int request)
         {
             throw new NotImplementedException();
         }
