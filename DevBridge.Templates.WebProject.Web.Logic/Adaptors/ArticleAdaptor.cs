@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Security;
+using DevBridge.Templates.WebProject.DataEntities;
 using DevBridge.Templates.WebProject.DataEntities.Entities;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Comment;
@@ -55,7 +57,6 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
 
         public Article ArticleViewModel2Article(ArticleViewModel articleViewModel)
         {
-
             var article = new Article();
             article.Id = articleViewModel.Id;
             article.Text = articleViewModel.Text;
@@ -68,6 +69,20 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
         {
             var article = new Article {UserId = request.UserId, Title = request.Title, Text = request.Text};
             return article;
+        }
+
+        public Comment CreateCommentViewModel2Comment(CreateCommentViewModel request)
+        {
+            var comment = new Comment()
+            {
+                Text = request.Text,
+                UserId = request.UserId,
+                Article = request.Article,
+                ParentComment = request.ParentComment,
+                Likes = new List<Like>()
+            };
+            return comment;
+
         }
     }
 }

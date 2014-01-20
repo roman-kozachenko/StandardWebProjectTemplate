@@ -70,6 +70,7 @@
     <Compile Include="Commands\Article\GetArticle\GetArticleCommand.cs" />
     <Compile Include="Commands\Comment\CreateComment\CreateCommentCommand.cs" />
     <Compile Include="Commands\Comment\DeleteComment\DeleteCommentCommand.cs" />
+    <Compile Include="Commands\Comment\GetCommentsCommand\GetCommentsCommand.cs" />
     <Compile Include="ContainerFactory.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Models\Article\ArticleViewModel.cs" />
     <Compile Include="Models\Article\CreateArticleViewModel.cs" />
     <Compile Include="Models\Article\GetArticlesFilterViewModel.cs" />
+    <Compile Include="Models\Comment\CommentListViewModel.cs" />
     <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Comment\CreateCommentViewModel.cs" />
     <Compile Include="Models\Like\LikeViewModel.cs" />
