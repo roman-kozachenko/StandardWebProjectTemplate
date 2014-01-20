@@ -19,7 +19,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
                 Title = article.Title,
                 Text = article.Text,
                 User=GetUserById(article.UserId),
-                Comments=article.Comments.Select(Comment2CommentViewModel).ToList()
+                Comments=article.Comments.Select(Comment2CommentViewModel).ToList(),
             };
             return result;
         }
@@ -32,6 +32,8 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
         private UserViewModel User2UserViewModel(MembershipUser user)
         {
             var result = new UserViewModel {Name = user != null ? user.UserName : "Unknown user"};
+            if (user != null)
+                result.UserId = user.ProviderUserKey is Guid ? (Guid) user.ProviderUserKey : new Guid();
             return result;
         }
 
@@ -49,6 +51,17 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
         public  LikeViewModel Like2LikeViewModel(Like like)
         {
             return new LikeViewModel {User = GetUserById(like.UserId)};
+        }
+
+        public Article ArticleViewModel2Article(ArticleViewModel articleViewModel)
+        {
+
+            var article = new Article();
+            article.Id = articleViewModel.Id;
+            article.Text = articleViewModel.Text;
+            article.Title = articleViewModel.Title;
+            article.UserId = articleViewModel.User.UserId;
+            return article;
         }
 
         public Article CreateArticleViewModel2Article(CreateArticleViewModel request)

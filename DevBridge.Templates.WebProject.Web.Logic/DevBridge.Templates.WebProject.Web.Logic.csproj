@@ -65,6 +65,7 @@
     <Compile Include="Commands\Agreement\GetAgreements\GetAgreementsFilter.cs" />
     <Compile Include="Commands\Article\CreateArticle\CreateArticleCommand.cs" />
     <Compile Include="Commands\Article\DeleteArticle\DeleteArticleCommand.cs" />
+    <Compile Include="Commands\Article\EditArticleCommand\EditArticleCommand.cs" />
     <Compile Include="Commands\Article\GetArticles\GetArticlesCommand.cs" />
     <Compile Include="Commands\Article\GetArticle\GetArticleCommand.cs" />
     <Compile Include="Commands\Comment\CreateComment\CreateCommentCommand.cs" />

@@ -127,7 +127,7 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         public class ActionParamsClass_Edit
         {
             public readonly string id = "id";
-            public readonly string collection = "collection";
+            public readonly string article = "article";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -136,7 +136,6 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         public class ActionParamsClass_Delete
         {
             public readonly string id = "id";
-            public readonly string collection = "collection";
         }
         static readonly ActionParamsClass_WireJson s_params_WireJson = new ActionParamsClass_WireJson();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -238,14 +237,14 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
             return callInfo;
         }
 
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, System.Web.Mvc.FormCollection collection);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, DevBridge.Templates.WebProject.Web.Logic.Models.Article.ArticleViewModel article);
 
-        public override System.Web.Mvc.ActionResult Edit(int id, System.Web.Mvc.FormCollection collection)
+        public override System.Web.Mvc.ActionResult Edit(int id, DevBridge.Templates.WebProject.Web.Logic.Models.Article.ArticleViewModel article)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "collection", collection);
-            EditOverride(callInfo, id, collection);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "article", article);
+            EditOverride(callInfo, id, article);
             return callInfo;
         }
 
@@ -256,17 +255,6 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DeleteOverride(callInfo, id);
-            return callInfo;
-        }
-
-        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, System.Web.Mvc.FormCollection collection);
-
-        public override System.Web.Mvc.ActionResult Delete(int id, System.Web.Mvc.FormCollection collection)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "collection", collection);
-            DeleteOverride(callInfo, id, collection);
             return callInfo;
         }
 
