@@ -8,5 +8,6 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Models.User
     public class UserViewModel
     {
         public string Name { get; set; }
+        public Guid UserId { get; set; }
     }
 }

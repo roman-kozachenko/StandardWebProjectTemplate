@@ -5,7 +5,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Article.DeleteArticl
 {
     public class DeleteArticleCommand:CommandBase,ICommand<int>
     {
-        public void Execute(int articleId)
+        public void Execute(int viewModel)
         {
             throw new NotImplementedException();
         }

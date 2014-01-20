@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DevBridge.Templates.WebProject.Web.Helpers;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.CreateArticle;
+using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.EditArticleCommand;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticle;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
@@ -77,19 +78,20 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Edit(int id)
         {
-            return View();
+            var model = GetCommand<GetArticleCommand>().ExecuteCommand(id);
+
+            return View(model);
         }
 
         //
         // POST: /Article/Edit/5
 
         [HttpPost]
-        public virtual ActionResult Edit(int id, FormCollection collection)
+        public virtual ActionResult Edit(int id,ArticleViewModel article)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                GetCommand<EditArticleCommand>().ExecuteCommand(article);
                 return RedirectToAction("Index");
             }
             catch
