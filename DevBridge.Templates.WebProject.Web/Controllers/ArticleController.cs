@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DevBridge.Templates.WebProject.Web.Helpers;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.CreateArticle;
+using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.DeleteArticle;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.EditArticleCommand;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticle;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Article.GetArticles;
@@ -105,25 +106,8 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
 
         public virtual ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Article/Delete/5
-
-        [HttpPost]
-        public virtual ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            GetCommand<DeleteArticleCommand>().ExecuteCommand(id);
+            return RedirectToAction("Index");
         }
     }
 }
