@@ -12,6 +12,7 @@ namespace DevBridge.Templates.WebProject.DataEntities.Entities
         public virtual Article Article { get; set; }
         public virtual Comment ParentComment { get; set; }
 
+        public virtual IList<Comment> Comments { get; set; }
         public virtual IList<Like> Likes { get; set; }
     }
 }

@@ -24,8 +24,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Commands.Comment.GetCommentsC
         {
             var query =
                 _repository.AsQueryable<DataEntities.Entities.Comment>()
-                    .Where(comment => comment.Article.Id == articleId);
-
+                    .Where(comment => comment.Article.Id == articleId && comment.ParentComment == null);
 
             return new CommentListViewModel
             {

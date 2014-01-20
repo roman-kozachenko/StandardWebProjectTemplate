@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Security;
+using DevBridge.Templates.WebProject.DataContracts;
 using DevBridge.Templates.WebProject.DataEntities;
 using DevBridge.Templates.WebProject.DataEntities.Entities;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Article;
@@ -21,7 +22,7 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
                 Title = article.Title,
                 Text = article.Text,
                 User=GetUserById(article.UserId),
-                Comments=article.Comments.Select(Comment2CommentViewModel).ToList(),
+                //Comments=article.Comments.Select(Comment2CommentViewModel).ToList(),
             };
             return result;
         }
@@ -39,13 +40,15 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
             return result;
         }
 
-        public  CommentViewModel Comment2CommentViewModel(Comment comment)
+        public CommentViewModel Comment2CommentViewModel(Comment comment)
         {
             var result = new CommentViewModel
             {
+                Id = comment.Id,
                 Text = comment.Text,
                 User = GetUserById(comment.UserId),
-                Likes = comment.Likes.Select(Like2LikeViewModel).ToList()
+                Likes = comment.Likes.Select(Like2LikeViewModel).ToList(),
+                Comments = comment.Comments.Select(Comment2CommentViewModel).ToList()
             };
             return result;
         }
@@ -70,19 +73,6 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
             var article = new Article {UserId = request.UserId, Title = request.Title, Text = request.Text};
             return article;
         }
-
-        public Comment CreateCommentViewModel2Comment(CreateCommentViewModel request)
-        {
-            var comment = new Comment()
-            {
-                Text = request.Text,
-                UserId = request.UserId,
-                Article = request.Article,
-                ParentComment = request.ParentComment,
-                Likes = new List<Like>()
-            };
-            return comment;
-
-        }
     }
 }
+

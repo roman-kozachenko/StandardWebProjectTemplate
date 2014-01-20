@@ -18,6 +18,7 @@ namespace DevBridge.Templates.WebProject.DataEntities.Mappings
             References(f => f.Article).Column("ArticleId").Not.Nullable();
             References(f => f.ParentComment).Column("ParentCommentId").Nullable();
 
+            HasMany(f => f.Comments).KeyColumn("ParentCommentId").Cascade.Delete();
             HasMany(f => f.Likes).KeyColumn("CommentId").Cascade.Delete();
         }
     }

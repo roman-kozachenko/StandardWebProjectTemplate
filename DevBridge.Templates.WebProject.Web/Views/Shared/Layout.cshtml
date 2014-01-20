@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="@Links.Content.Site_css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout-3.0.0.js"></script>
+    <script type="text/javascript" src="/Scripts/knockout.mapping-latest.js"></script>
 </head>
     <body>
         <header class="header">
@@ -27,7 +31,7 @@
             </footer>
         </div>
         @*<script type="text/javascript" data-main="@Links.Scripts.application_js"  src="@Links.Scripts.require_js"></script>*@
-        <script type="text/javascript">
+        @*<script type="text/javascript">
             (function (t) {
                 'use strict';
                 var a = document.createElement(t),
@@ -38,6 +42,6 @@
                 a.src = '@Links.Scripts.require_js';
                 b.parentNode.insertBefore(a, b);
             }('script'));
-        </script>
+        </script>*@
     </body>
 </html>

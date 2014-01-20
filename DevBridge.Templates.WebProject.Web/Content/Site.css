@@ -39,3 +39,5 @@ blockquote { border-left: 4px solid #DDD; padding: 0 15px; color: #777; margin: 
     .modal-close:hover { background: #e1e1e1; color: #000; }
 .modal-title { font-weight: bold; font-size: 12px; padding: 0 5px; }
 .modal-content { padding: 10px; overflow: auto; margin: 10px 0 0 0; }
+
+.comment-container { padding-left: 20px;margin-top: 10px;}

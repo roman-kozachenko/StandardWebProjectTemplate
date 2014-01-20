@@ -1,5 +1,52 @@
 ﻿@model DevBridge.Templates.WebProject.Web.Logic.Models.Article.ArticleViewModel
 
+<script type="text/html" id="commentTemplate">
+    <div class="comment-container">
+        <div class="comment-header">
+            User <strong data-bind="text: User.Name()"></strong> commented
+        </div>
+        <div class="comment-content">
+            <p data-bind="text: Text"></p>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="comment-controls">
+                <button data-bind="click: showCommentBox">Comment</button>
+            </div>
+        }
+        <div class="comments">
+            <!-- ko template: { name: 'commentTemplate', foreach: Comments } -->
+            <!-- /ko -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="comment-box" data-bind="with: CommentBox">
+                    <div>Write your comment:</div>
+                    <div>
+                        <textarea data-bind="value: Text"></textarea>
+                    </div>
+                    <div>
+                        <button class="submit" data-bind="click: submit">Submit</button>
+                        <button class="cancel" data-bind="click: cancel">Cancel</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript" src="/Scripts/comments.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        var id = @Model.Id;
+        var articleViewModel = new ArticleViewModel(id);
+
+        articleViewModel.reloadCommentTree();
+
+        ko.applyBindings(articleViewModel);
+    })
+</script>
+
 <h2>@Model.Title</h2>
 <div>
     @Model.Text
@@ -8,8 +55,25 @@
     Created By: @Model.User.Name
 </div>
 <div>
-    @Html.ActionLink("Edit article","Edit",new{id = Model.Id})
+    @Html.ActionLink("Edit article", "Edit", new { id = Model.Id })
 </div>
 <div>
     @Html.ActionLink("Delete article","Delete",new{id = Model.Id})
+</div>
+
+<div class="comments">
+    <!-- ko template: { name: 'commentTemplate', foreach: Comments } -->
+    <!-- /ko -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="comment-box" data-bind="with: CommentBox">
+            <div>Write your comment:</div>
+            <div>
+                <textarea data-bind="value: Text"></textarea>
+            </div>
+            <div>
+                <button class="submit" data-bind="click: submit">Submit</button>
+            </div>
+        </div>
+    }
 </div>
