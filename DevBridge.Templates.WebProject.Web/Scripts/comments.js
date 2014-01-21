@@ -29,7 +29,7 @@
     };
 
     self.resetCommentBox = function() {
-        self.CommentBox = ko.observable(new CommentBoxViewModel(self));
+        self.CommentBox().Text("");
     };
 };
 
@@ -124,7 +124,10 @@ CommentBoxViewModel = function(parent) {
 
     self.Text = ko.observable();
 
-    self.submit = function() {
+    self.submit = function () {
+        if (self.Text() == "")
+            return;
+
         var articleId = null;
         var commentId = null;
 
