@@ -41,3 +41,9 @@ blockquote { border-left: 4px solid #DDD; padding: 0 15px; color: #777; margin: 
 .modal-content { padding: 10px; overflow: auto; margin: 10px 0 0 0; }
 
 .comment-container { padding-left: 20px;margin-top: 10px;border-left: 1px solid lightgray;}
+.clearfix { clear: both; }
+.article_body { background: #fafafa; }
+.additional_info { font-style: italic; float: right; }
+.comment-header { font-style: italic; font-size: -2pt }
+.comment-likes { float: right; }
+.comment-body { background: #fdfdfd }
