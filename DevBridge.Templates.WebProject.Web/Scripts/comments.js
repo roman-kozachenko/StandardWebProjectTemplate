@@ -56,6 +56,19 @@ CommentViewModel = function(data, parent) {
 
     self.Text = ko.observable();
 
+    self.IsLiked = ko.observable();
+    self.LikesCount = ko.observable();
+
+    self.LikeText = ko.computed(function() {
+        if (self.LikesCount() == 0)
+            return "";
+
+        if (self.LikesCount() == 1)
+            return "1 user liked";
+
+        return self.LikesCount() + " users liked";
+    }, self);
+
     self.Comments = ko.observableArray();
     self.CommentBox = ko.observable();
 
@@ -65,6 +78,40 @@ CommentViewModel = function(data, parent) {
 
     self.resetCommentBox = function() {
         self.CommentBox(null);
+    };
+
+    self.like = function() {
+        $.ajax({
+            url: "/Comment/Like",
+            type: "POST",
+            data: {
+                CommentId: self.Id()
+            },
+            dataType: "json",
+            success: function (json) {
+                if (json) {
+                    self.IsLiked(true);
+                    self.LikesCount(self.LikesCount() + 1);
+                }
+            }
+        });
+    };
+
+    self.unlike = function() {
+        $.ajax({
+            url: "/Comment/Unlike",
+            type: "POST",
+            data: {
+                CommentId: self.Id()
+            },
+            dataType: "json",
+            success: function (json) {
+                if (json) {
+                    self.IsLiked(false);
+                    self.LikesCount(self.LikesCount() - 1);
+                }
+            }
+        });
     };
 
     ko.mapping.fromJS(data, self.mapping, self);

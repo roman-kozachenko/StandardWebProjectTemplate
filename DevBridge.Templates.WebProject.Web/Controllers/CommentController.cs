@@ -9,7 +9,9 @@ using DevBridge.Templates.WebProject.Tools.Mvc;
 using DevBridge.Templates.WebProject.Web.Helpers;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Comment.CreateComment;
 using DevBridge.Templates.WebProject.Web.Logic.Commands.Comment.GetCommentsCommand;
+using DevBridge.Templates.WebProject.Web.Logic.Commands.Like;
 using DevBridge.Templates.WebProject.Web.Logic.Models.Comment;
+using DevBridge.Templates.WebProject.Web.Logic.Models.Like;
 
 namespace DevBridge.Templates.WebProject.Web.Controllers
 {
@@ -45,6 +47,42 @@ namespace DevBridge.Templates.WebProject.Web.Controllers
         public ActionResult Delete()
         {
             return null;
+        }
+
+        [HttpPost]
+        public ActionResult Like(int commentId)
+        {
+            var user = Membership.GetUser();
+
+            if (user == null)
+                return new HttpStatusCodeResult((int) HttpStatusCode.Unauthorized);
+
+            var result = GetCommand<SetLikeStateCommand>().Execute(new SetLikeStateViewModel()
+            {
+                CommentId = commentId,
+                UserId = (Guid) user.ProviderUserKey,
+                LikeState = true
+            });
+
+            return Json(result);
+        }
+
+        [HttpPost]
+        public ActionResult Unlike(int commentId)
+        {
+            var user = Membership.GetUser();
+
+            if (user == null)
+                return new HttpStatusCodeResult((int)HttpStatusCode.Unauthorized);
+
+            var result = GetCommand<SetLikeStateCommand>().Execute(new SetLikeStateViewModel()
+            {
+                CommentId = commentId,
+                UserId = (Guid) user.ProviderUserKey,
+                LikeState = false
+            });
+
+            return Json(result);
         }
     }
 }

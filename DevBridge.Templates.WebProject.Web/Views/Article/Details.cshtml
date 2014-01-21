@@ -1,7 +1,12 @@
 ﻿@model DevBridge.Templates.WebProject.Web.Logic.Models.Article.ArticleViewModel
 <style type="text/css">
-    .article_body {
-        background: #fafafa;
+    
+    .clearfix {
+        clear: both;
+    }
+
+     .article_body {
+         background: #fafafa;
      }
 
     .additional_info {
@@ -14,17 +19,23 @@
         font-size: -2pt
     }
 
+    .comment-likes {
+        float: right;
+    }
+
     .comment-body {
-         background: #fdfdfd
+        background: #fdfdfd
     }
 </style>
 
 <script type="text/html" id="commentTemplate">
     <div class="comment-container">
         <div class="comment-body">
+            <div class="comment-likes" data-bind="text: LikeText"></div>
             <div class="comment-header">
                 User <strong data-bind="text: User.Name()"></strong> commented:
             </div>
+            <div class="clearfix"></div>
             <div class="comment-content">
                 <p data-bind="text: Text"></p>
             </div>
@@ -32,6 +43,12 @@
             {
                 <div class="comment-controls">
                     <a href="#" data-bind="click: showCommentBox">Answer this comment</a>
+                    <!-- ko ifnot: IsLiked -->
+                    <a href="#" data-bind="click: like">Like</a>
+                    <!-- /ko -->
+                    <!-- ko if: IsLiked -->
+                    <a href="#" data-bind="click: unlike">Unlike</a>
+                    <!-- /ko -->
                 </div>
             }
         </div>
@@ -84,6 +101,7 @@
 }
     Created By: @Model.User.Name
 </div>
+<div class="clearfix"></div>
 
 <div class="comments">
     <!-- ko template: { name: 'commentTemplate', foreach: Comments } -->

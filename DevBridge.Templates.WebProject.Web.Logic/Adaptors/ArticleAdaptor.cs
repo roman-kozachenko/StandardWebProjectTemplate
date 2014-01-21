@@ -50,6 +50,15 @@ namespace DevBridge.Templates.WebProject.Web.Logic.Adaptors
                 Likes = comment.Likes.Select(Like2LikeViewModel).ToList(),
                 Comments = comment.Comments.Select(Comment2CommentViewModel).ToList()
             };
+
+            var user = Membership.GetUser();
+
+            if (user != null)
+            {
+                result.IsLiked = result.Likes.Any(c => c.User.UserId == (Guid) user.ProviderUserKey);
+            }
+            result.LikesCount = result.Likes.Count;
+
             return result;
         }
 

@@ -74,6 +74,7 @@
     <Compile Include="Commands\Like\CreateLikeCommand.cs" />
     <Compile Include="Commands\Like\DeleteLikeCommand.cs" />
     <Compile Include="Commands\Like\GetLikesCommand.cs" />
+    <Compile Include="Commands\Like\SetLikeStateCommand.cs" />
     <Compile Include="ContainerFactory.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Models\Comment\CommentListViewModel.cs" />
     <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Comment\CreateCommentViewModel.cs" />
+    <Compile Include="Models\Like\SetLikeStateViewModel.cs" />
     <Compile Include="Models\Like\LikesListViewModel.cs" />
     <Compile Include="Models\Like\LikeViewModel.cs" />
     <Compile Include="Models\User\UserViewModel.cs" />
