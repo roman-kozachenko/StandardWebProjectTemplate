@@ -5,7 +5,10 @@
 }
 
 <h2>Articles</h2>
-@Html.ActionLink("New article","Create")
+@if (Roles.GetRolesForUser().Contains("Editor"))
+{
+    @Html.ActionLink("New article", "Create")
+}
 <ul>
 @foreach (var article in Model.Articles) {
     Html.RenderPartial(MVC.Article.Views.Partial.Article, article);

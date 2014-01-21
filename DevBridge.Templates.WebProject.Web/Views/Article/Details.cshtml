@@ -1,19 +1,40 @@
 ﻿@model DevBridge.Templates.WebProject.Web.Logic.Models.Article.ArticleViewModel
+<style type="text/css">
+    .article_body {
+        background: #fafafa;
+     }
+
+    .additional_info {
+        font-style: italic;
+        float: right;
+    }
+
+    .comment-header {
+        font-style: italic;
+        font-size: -2pt
+    }
+
+    .comment-body {
+         background: #fdfdfd
+    }
+</style>
 
 <script type="text/html" id="commentTemplate">
     <div class="comment-container">
-        <div class="comment-header">
-            User <strong data-bind="text: User.Name()"></strong> commented
-        </div>
-        <div class="comment-content">
-            <p data-bind="text: Text"></p>
-        </div>
-        @if (User.Identity.IsAuthenticated)
-        {
-            <div class="comment-controls">
-                <button data-bind="click: showCommentBox">Comment</button>
+        <div class="comment-body">
+            <div class="comment-header">
+                User <strong data-bind="text: User.Name()"></strong> commented:
             </div>
-        }
+            <div class="comment-content">
+                <p data-bind="text: Text"></p>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="comment-controls">
+                    <a href="#" data-bind="click: showCommentBox">Answer this comment</a>
+                </div>
+            }
+        </div>
         <div class="comments">
             <!-- ko template: { name: 'commentTemplate', foreach: Comments } -->
             <!-- /ko -->
@@ -48,17 +69,20 @@
 </script>
 
 <h2>@Model.Title</h2>
-<div>
+<div class="article_body">
     @Model.Text
 </div>
-<div>
+<div class="additional_info">
+    
+    @if (Membership.GetUser()!=null && Membership.GetUser().UserName == Model.User.Name)
+{
+        @Html.ActionLink("Edit article", "Edit", new {id = Model.Id})
+}
+@if (Roles.GetRolesForUser().Contains("Admin"))
+{
+    @Html.ActionLink("Delete article", "Delete", new {id = Model.Id})
+}
     Created By: @Model.User.Name
-</div>
-<div>
-    @Html.ActionLink("Edit article", "Edit", new { id = Model.Id })
-</div>
-<div>
-    @Html.ActionLink("Delete article","Delete",new{id = Model.Id})
 </div>
 
 <div class="comments">
